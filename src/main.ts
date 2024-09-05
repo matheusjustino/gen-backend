@@ -4,9 +4,9 @@ import {
 	ExpressAdapter,
 	NestExpressApplication,
 } from '@nestjs/platform-express';
-import helmet from 'helmet';
 import compression from 'compression';
 import { json } from 'express';
+import helmet from 'helmet';
 
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './modules/app-config/filters/all-exceptions.filter';
@@ -22,10 +22,9 @@ async function bootstrap() {
 		credentials: true,
 	});
 
-	// app.use(helmet());
+	app.use(helmet());
 	app.use(compression());
 	app.use(json({ limit: '30mb' }));
-	// app.setGlobalPrefix('api');
 	app.useGlobalFilters(new AllExceptionsFilter());
 
 	app.enableShutdownHooks();

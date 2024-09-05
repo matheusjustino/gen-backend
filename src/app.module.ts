@@ -1,14 +1,14 @@
+import { ApolloDriver } from '@nestjs/apollo';
 import { Logger, Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver } from '@nestjs/apollo';
 
 // RESOLVERS
 import { AppResolver } from './app.resolver';
 
 // MODULES
 import { AppConfigModule } from './modules/app-config/app-config.module';
-import { PrismaModule } from './modules/prisma/prisma.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { PrismaModule } from './modules/prisma/prisma.module';
 import { TodoModule } from './modules/todo/todo.module';
 
 @Module({
@@ -21,8 +21,7 @@ import { TodoModule } from './modules/todo/todo.module';
 				credentials: true,
 			},
 			debug: true,
-			playground: true,
-			useGlobalPrefix: true,
+			playground: false,
 			context: ({ req }) => ({ headers: req.headers }),
 			formatError: (error) => {
 				Logger.error(JSON.stringify(error));
