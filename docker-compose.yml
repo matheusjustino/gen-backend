@@ -1,6 +1,6 @@
 services:
     backend:
-        container_name: 'api'
+        container_name: api
         build:
             dockerfile: Dockerfile
             context: .
@@ -35,4 +35,4 @@ services:
 
 networks:
     gen-services:
-        name: default_services_network
+        driver: bridge

@@ -15,7 +15,9 @@ Esta aplicação foi desenvolvida como um desafio técnico. Nela foram utlizados
 $ yarn install
 ```
 
-## Executando o projeto
+-   Utilize o comando `yarn start:dev` para executar o projeto
+
+## Executando o projeto o docker
 
 ```bash
 $ docker compose up
