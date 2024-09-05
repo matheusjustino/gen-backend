@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { TodoStatus } from '@prisma/client';
 
 // INTERFACES
 import { ITodoService } from './interfaces/todo-service.interface';
@@ -8,7 +9,6 @@ import { TodoService } from './todo.service';
 
 // SERVICES
 import { PrismaService } from '../prisma/prisma.service';
-import { TodoStatus } from '@prisma/client';
 
 describe('AuthService', () => {
 	let service: ITodoService;

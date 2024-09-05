@@ -17,7 +17,7 @@ $ yarn install
 
 -   Utilize o comando `yarn start:dev` para executar o projeto
 
-## Executando o projeto o docker
+## Executando o projeto com docker
 
 ```bash
 $ docker compose up
@@ -32,3 +32,7 @@ $ docker-compose up
 ```bash
 $ yarn test
 ```
+
+## Outros
+
+-   [Frontend da aplicação](https://github.com/matheusjustino/gen-frontend)
