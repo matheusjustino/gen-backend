@@ -27,6 +27,9 @@ $ docker compose up
 $ docker-compose up
 ```
 
+_Execute o comando acima nos dois projetos para executar sem configuração
+adicional._
+
 ## Test
 
 ```bash

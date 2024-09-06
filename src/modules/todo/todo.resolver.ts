@@ -1,5 +1,5 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Inject, UseGuards } from '@nestjs/common';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 
 // ENUMS
 import { TodoProviderEnum } from './enums/todo-provider.enum';
@@ -11,12 +11,12 @@ import { GqlJWTGuard } from '../auth/guards/gql-jwt.guard';
 import { CurrentUser } from '../auth/decorators/user.decorator';
 
 // INTERFACES
-import { ITodoService } from './interfaces/todo-service.interface';
 import { IUserRequest } from '../auth/interfaces/user-request.interface';
+import { ITodoService } from './interfaces/todo-service.interface';
 
 // DTOS
-import { TodoDTO } from './dtos/todo.dto';
 import { CreateTodoDTO } from './dtos/create-todo.dto';
+import { TodoDTO } from './dtos/todo.dto';
 import { UpdateTodoDTO } from './dtos/update-todo.dto';
 
 @UseGuards(GqlJWTGuard)
@@ -46,5 +46,13 @@ export class TodoResolver {
 		@Args('input') input: UpdateTodoDTO,
 	) {
 		return this.todoService.updateTodo(user.id, input);
+	}
+
+	@Mutation(() => String)
+	public async deleteTodo(
+		@CurrentUser() user: IUserRequest,
+		@Args('todoId') todoId: string,
+	) {
+		return this.todoService.deleteTodo(todoId, user.id);
 	}
 }

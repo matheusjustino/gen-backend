@@ -7,8 +7,8 @@ import { ITodoService } from './interfaces/todo-service.interface';
 import { PrismaService } from '../prisma/prisma.service';
 
 // DTOS
-import { TodoDTO } from './dtos/todo.dto';
 import { CreateTodoDTO } from './dtos/create-todo.dto';
+import { TodoDTO } from './dtos/todo.dto';
 import { UpdateTodoDTO } from './dtos/update-todo.dto';
 
 @Injectable()
@@ -57,5 +57,21 @@ export class TodoService implements ITodoService {
 			},
 			data,
 		});
+	}
+
+	public async deleteTodo(todoId: string, ownerId: string): Promise<string> {
+		this.logger.log(`deleteTodo`);
+
+		return this.prismaService.todo
+			.delete({
+				where: {
+					id: todoId,
+					ownerId,
+				},
+				select: {
+					id: true,
+				},
+			})
+			.then((res) => res.id);
 	}
 }
