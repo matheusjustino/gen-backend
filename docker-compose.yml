@@ -8,8 +8,8 @@ services:
         ports:
             - '8080:8080'
         volumes:
-            - ./users-api:/home/app:cached
-            - ./users-api/package.json:/home/app/package.json:cached
+            - .:/home/app:cached
+            - ./package.json:/home/app/package.json:cached
         depends_on:
             database:
                 condition: service_healthy
